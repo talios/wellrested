@@ -25,24 +25,6 @@
 
 ; Link header info: http://tools.ietf.org/html/draft-nottingham-http-link-header-07
 
-;[
-;	{
-;		"links":[
-;			{
-;				"rel":"view",
-;				"url":"http:\/\/localhost:8080\/stafflist\/0c6d5bfc-5e1f-455e-b46d-3b873868519a",
-;				"type":"application\/wellrested-staffmember+json"
-;			},{
-;				"rel":"delete",
-;				"url":"http:\/\/localhost:8080\/stafflist\/0c6d5bfc-5e1f-455e-b46d-3b873868519a",
-;				"method":"DELETE"
-;			}],
-;		"id":"0c6d5bfc-5e1f-455e-b46d-3b873868519a",
-;		"name":"Mark",
-;		"status":"active"
-;	}
-;]
-
 ; View Root: curl -v http://localhost:8080/
 ; Add Staff: curl -v -X POST -H "Content-Type: application/x-www-form-urlencoded; rel=wellrested-newstaffmember" -d name="Test 2" http://localhost:8080/stafflist
 ; View staff: curl http://localhost:8080/stafflist/0c6d5bfc-5e1f-455e-b46d-3b873868519a
@@ -98,7 +80,7 @@
   (GET "/"
     {:status 200
      :headers {"Content-Type" "application/json; rel=wellrested"
-               "Link" "<http://localhost:8080/stafflist>; rel=\"stafflist\"; type=\"application/json\"; title=\"List current staff members\""
+               "Link" "<http://localhost:8080/stafflist>; rel=\"stafflist\"; type=\"application/json; rel=wellrested-stafflist\"; title=\"List current staff members\""
                "Link" "<http://localhost:8080/stafflist>; rel=\"stafflist\"; type=\"application/json; rel=wellrested-fullstafflist\"; title=\"List all staff members including deleted\""}
      :body (json-str {:name "wellrested"})})
 
@@ -144,18 +126,6 @@
     (dosync
       (ref-set *STAFFLIST* (map (delete-staff-member (:id params)) @*STAFFLIST*))
       {:status 200 :body (json-str {:status "Deleted"})}))
-
-
-  ; "Accept-Patch" "application/quicktask-request+json"
-
-  ;  (OPTIONS "/quicktask1"
-  ;    {:status 200
-  ;     :headers {"Accept-Patch" "application/quicktask-request+json"}})
-
-  ;  (PATCH "/quicktask1"
-  ;    (if (= "application/quicktask-request+json" (:content-type request))
-  ;      {:status 200 :body (json-str {:status "Patched"})}
-  ;      {:status 400 :body (json-str {:status "Unknown patch type"})}))
 
   (ANY "*" {:status 404}))
 
