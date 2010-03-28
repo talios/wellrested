@@ -1,66 +1,73 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.theoryinpractise</groupId>
-  <artifactId>wellrested</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>wellrested</name>
-  <url>http://maven.apache.org</url>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.theoryinpractise</groupId>
+    <artifactId>wellrested</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>wellrested</name>
+    <url>http://maven.apache.org</url>
 
-<repositories>
-<repository>
-  <id>clojars.org</id>
-  <url>http://clojars.org/repo</url>
-</repository>
-</repositories>
-	
-<build>
-	<plugins>
-	  <plugin>
-	    <groupId>com.theoryinpractise</groupId>
-	    <artifactId>clojure-maven-plugin</artifactId>
-	    <version>1.3.2</version>
-	    <configuration>
-		<replScript>src/test/clojure/com/theoryinpractise/wellrested/jetty.clj</replScript>
-	</configuration>
-	 <executions>
-            <execution>
-                <id>compile</id>
-                <phase>compile</phase>
-                <goals>
-                    <goal>compile</goal>
-                </goals>
-            </execution>
-            <execution>
-                <id>test</id>
-                <phase>test</phase>
-                <goals>
-                    <goal>test</goal>
-                </goals>
-            </execution>
-        </executions>
-	  </plugin>
-	</plugins>
-</build>
+    <repositories>
+        <repository>
+            <id>clojars.org</id>
+            <url>http://clojars.org/repo</url>
+        </repository>
+    </repositories>
 
-  <dependencies>
-	
-	<dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>clojure</artifactId>
-      <version>1.2.0-master-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>clojure-contrib</artifactId>
-      <version>1.2.0-master-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>compojure</groupId>
-      <artifactId>compojure</artifactId>
-      <version>0.3.2</version>
-    </dependency>
-	
-  </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.theoryinpractise</groupId>
+                <artifactId>clojure-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <replScript>src/test/clojure/com/theoryinpractise/wellrested/jetty.clj</replScript>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.clojure</groupId>
+            <artifactId>clojure</artifactId>
+            <version>1.2.0-master-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.clojure</groupId>
+            <artifactId>clojure-contrib</artifactId>
+            <version>1.2.0-master-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>compojure</groupId>
+            <artifactId>compojure</artifactId>
+            <version>0.3.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>clojure-http-client</groupId>
+            <artifactId>clojure-http-client</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
 </project>
