@@ -21,7 +21,7 @@ You can start the API by launching the clojure repl:
 
 Once the system is running, the primary endpoint of the API can be found at:
 
-    http://localhost:8080.
+    http://localhost:8080
 
 Currently, only one type of resource is currently provided by the API - "the staff list", the availability of this resource
 is known when a link with the relationship "stafflist" is returned.
