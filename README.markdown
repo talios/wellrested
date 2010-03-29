@@ -42,16 +42,19 @@ This is the default staff list media type, it contains a _filtered_ list of acti
 The document is a JSON array, with each element containing a series of JSON-Schema link objects, which identify
 further things to do with the individual record.
 
+    Link: <xxxxx>; rel=\"create\"; type=\"application/x-www-form-urlencoded; rel=wellrested-newstaffmember\"; title=\"Create a new staff member\"; method=\"POST\""
+    Accept-Patch: application/x-www-form-urlencoded; rel=wellrested-announcement
+    
     [
       {
         "links":[
           {
             "rel":"view",
-            "url":"http:\/\/localhost:8080\/stafflist\/0c6d5bfc-5e1f-455e-b46d-3b873868519a",
+            "url":"xxxxx",
             "type":"application\/wellrested-staffmember+json"
           },{
             "rel":"delete",
-            "url":"http:\/\/localhost:8080\/stafflist\/0c6d5bfc-5e1f-455e-b46d-3b873868519a",
+            "url":"xxxxx",
             "method":"DELETE"
           }],
         "id":"0c6d5bfc-5e1f-455e-b46d-3b873868519a",
@@ -61,7 +64,8 @@ further things to do with the individual record.
     ]
 
 As we are a small startup organization which doesn't wish to grow too large, if new staff members can be hired, an HTTP
-"Link" header for the "create" relation is provided.
+"Link" header for the "create" relation is provided, and operations on the resource can be performed by submitting PATCH
+requests containing requests identified via the Accept-Patch header.
 
 ### Media Type: application/json; rel=wellrested-fullstafflist
 
